@@ -1,5 +1,5 @@
-from game import gameStart
+from game_start import GameStart
 
-main = gameStart()
+main = GameStart()
 
 main.rodar()

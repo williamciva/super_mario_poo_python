@@ -1,20 +1,18 @@
-import pygame
+from pygame import display
 from pygame.locals import *
 
 # Essa classe se dedica a configurar a resolucao do jogo
 
-class resolucao_jogo:
+class ResolucaoConfig:
     def __init__(self) -> None:
+        
 
         # Tamanho da JANELA do jogo
-        self.largura = 1920 # Largura de Incializacao do jogo
-        self.altura = 1080 # Altura de Incializacao do jogo
-
+        self.largura_janela, self.altura_janela = 1280, 720 # Largura  e altura de Incializacao do jogo
 
         # Cria-se a estrutura necessária para gerar uma janela do tamanho x ( especifico do pygames )
-        resolucao = (self.largura, self.altura) 
-        self.resolucao_jogo = pygame.display.set_mode(resolucao)
-
+        proporcao_da_janela = (self.largura_janela, self.altura_janela) 
+        self.display_proporcao_janela = display.set_mode(proporcao_da_janela)
 
         # Nesse dict temos uma razao onde a chave é o nome da resolucao 
         # e ao lado temos a largura e a altura respectivamente separadas por virgula
@@ -32,24 +30,20 @@ class resolucao_jogo:
 
 
     def get_pygame_display(self):
-        return self.resolucao_jogo
+        return self.display_proporcao_janela
 
+    def calcula_proporcao_imagemXresolucao(self, largura_imagem, altura_imagem):
+        razao_de_proporcao = ( self.altura_janela / altura_imagem )
 
-    def calcula_proporcao_imagemXresolucao(self):
-
-        self.proporcao_mapaXresolucao = self.altura / 232 # Esse numero magico e a razao de proporcao ente a resolucao e o tamanho do mapa 1
-
-        largura = 3392 * self.proporcao_mapaXresolucao
-        altura = 232 * self.proporcao_mapaXresolucao
+        largura = largura_imagem * razao_de_proporcao
+        altura = altura_imagem * razao_de_proporcao
 
         return (largura, altura)
 
-
-    def get_resolcoes_possiveis(self):
+    def get_resolucoes_possiveis(self):
         return self.dicionario_de_resolucoes
 
-
-    def set_resolucao_jogo(self, dict_chave):
+    def get_proporcoes_para_resolucao(self, dict_chave):
         valor = self.dicionario_de_resolucoes[dict_chave]
         achouX = False
         for i in valor:
@@ -62,3 +56,6 @@ class resolucao_jogo:
                 largura += i
 
         return (largura, altura)
+
+    def set_resolucao(self, largura, altura):
+        pass

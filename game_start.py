@@ -1,15 +1,17 @@
 from pygame import init, display
 from pygame.locals import *
-import game_config.tela_config as modulo_tela
+from game_config.controlador import Controlador
 
 
-class gameStart:
+class GameStart:
     def __init__(self) -> None:
-        self.init_tela = modulo_tela.tela_jogo()
+        self.controlador = Controlador()
 
     def rodar(self):
         init()
         while True:
             
             
+            self.controlador.teclas_gerais.mapa()
+            self.controlador.fps.run_fps()
             display.update()
