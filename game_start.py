@@ -1,9 +1,9 @@
 from pygame import init, display
-from pygame.locals import *
+from os import environ
 from game_config.controlador import Controlador
 
 
-class GameStart:
+class GameStart(object):
     def __init__(self) -> None:
         self.controlador = Controlador()
 

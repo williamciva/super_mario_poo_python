@@ -1,6 +1,6 @@
 import pygame
 
-class MapaTeclasGerais:
+class MapaTeclasGerais(object):
     def __init__(self) -> None:
         self.mapa()
 

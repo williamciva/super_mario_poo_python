@@ -1,6 +1,6 @@
 from pygame import time
 
-class Fps_config:
+class Fps_config(object):
     def __init__(self) -> None:
         # Define o FPS do Game
         self.fps = int(30)
